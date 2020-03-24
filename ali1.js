@@ -1,27 +1,56 @@
 // 题目：实现一个函数，比较两个版本号的大小。返回 1（大于）/0（等于）/-1（小于）
 function compareVer(ver1, ver2) {
   // 代码写在这里↓↓↓↓↓
-  const arr1 = ver1.split('.');
-  const arr2 = ver2.split('.');
-  function func(a, b) {
-    if(parseInt(a) > parseInt(b)) {
-      return 1;
-    }else if(parseInt(a) < parseInt(b)) {
-      return -1;
-    }
-    return 0;
+  // const arr1 = ver1.split('.');
+  // const arr2 = ver2.split('.');
+  // function func(a, b) {
+  //   if(parseInt(a) > parseInt(b)) {
+  //     return 1;
+  //   }else if(parseInt(a) < parseInt(b)) {
+  //     return -1;
+  //   }
+  //   return 0;
+  // }
+  // let fg = 0;
+  // fg = func(arr1[0], arr2[0]);
+  // if(fg) {
+  //   return fg;
+  // }
+  // fg = func(arr1[1], arr2[1]);
+  // if(fg) {
+  //   return fg;
+  // }
+  // fg = func(arr1[2], arr2[2]);
+  // return fg;
+  const arr1$ = ver1.split('.');
+  const arr2$ = ver2.split('.');
+  
+  const maxArr = [null, null, null].map((item, index)=> {
+    return Math.max(arr1$[index].length, arr2$[index].length);
+  });
+  
+  maxArr.reduceRight((prev, item, key)=>{
+    maxArr[key] = prev;
+    return item + prev;
+  },0);
+  
+  
+  let res1 = 0, res2 = 0;
+  
+  // console.log(maxArr, '___maxArr');
+  
+  for(let i = 0; i < maxArr.length; i += 1) {
+    res1 = parseInt(arr1$[i])* Math.pow(10, maxArr[i]) + res1;
+    res2 = parseInt(arr2$[i])* Math.pow(10,maxArr[i]) + res2;
   }
-  let fg = 0;
-  fg = func(arr1[0], arr2[0]);
-  if(fg) {
-    return fg;
+  
+  console.log('\tres1:'+res1+'\n\t'+'res2:'+res2);
+  if(res1 > res2) {
+    return 1;
+  }else if (res1 < res2){
+    return -1;
   }
-  fg = func(arr1[1], arr2[1]);
-  if(fg) {
-    return fg;
-  }
-  fg = func(arr1[2], arr2[2]);
-  return fg;
+  return 0;
  	
   // 代码写在这里↑↑↑↑↑
 }

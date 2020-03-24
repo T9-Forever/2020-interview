@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>三列等高布局</title>
+    <style>
+      .container {
+        min-width: 640px;
+        min-height: 80%;
+        overflow: hidden;
+        max-width: 1200px;
+        margin: auto;
+      }
+      .content {
+        /* height: 100px; */
+        background: purple;
+        float: left;
+        width: 100%;
+
+        padding-bottom: 1000px;
+        margin-bottom: -1000px;
+      }
+      .content .inner {
+        margin: 0 220px;
+        background: sienna;
+      }
+      .left {
+        width: 200px;
+        /* height: 600px; */
+        background: blue;
+        float: left;
+        
+        margin-left: -100%;
+
+        padding-bottom: 1000px;
+        margin-bottom: -1000px;
+      }
+      .right {
+        width: 200px;
+        /* height: 200px; */
+        background: seagreen;
+        float: left;
+        
+        margin-left: -200px;
+
+        padding-bottom: 1000px;
+        margin-bottom: -1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="inner">
+          圣杯布局
+        </div>
+      </div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div>footer</div>
+  </body>
+</html>
