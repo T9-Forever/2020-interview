@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>懒加载</title>
+    <style>
+      img {
+        display: block;
+        width: 100%;
+        height: 300px; /*需要预先知道img的位置*/
+        background: #eeeeee;
+      }
+    </style>
+    <script>
+      const viewHeight = document.documentElement.clientHeight;
+      const viewWidth = document.documentElement.clientWidth;
+
+      function lazyload() {
+        const eles = document.querySelectorAll('img[data-original][lazyload]');
+        
+        Array.prototype.forEach.call(eles, (item, idx)=> {
+          const rect = item.getBoundingClientRect();
+          if(rect.top < viewHeight && rect.bottom > 0 && rect.left < viewWidth && rect.right > 0) {
+            const image = new Image();
+            image.src = item.dataset.original;
+            image.onload = ()=> {
+              setTimeout(()=> {
+                item.src = image.src;
+                item.removeAttribute('lazyload');
+                item.removeAttribute('data-original');
+                item.style.width = 'auto';
+                item.style.height = 'auto';
+              }, 1000)
+            };
+          }
+        });
+      }
+      ~function() {
+        document.addEventListener('DOMContentLoaded',()=> {
+          lazyload();
+          document.addEventListener('scroll', ()=> {
+            lazyload();
+          });
+        });
+      }()
+    </script>
+  </head>
+  <body>
+    <div>
+      <img lazyload="true" data-original="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1585114877&di=13bdb4aaf347a6cdd3ea09f7302fd516&src=http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg"/>
+      <img lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585124963669&di=b42b93ecc9828dbb8fe20531d702a4b3&imgtype=0&src=http%3A%2F%2Ffile02.16sucai.com%2Fd%2Ffile%2F2014%2F0829%2Fb871e1addf5f8e96f3b390ece2b2da0d.jpg"/>
+      <img lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585124963669&di=821c7a456fa6fdd18c7f7efecf9461ad&imgtype=0&src=http%3A%2F%2Fdmimg.5054399.com%2Fallimg%2Fpkm%2Fpk%2F13.jpg"/>
+      <img lazyload="true" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585126458536&di=0ff0bb50585339345fd6eb0d85d3974b&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D3e4ae74da944ad342eea8f83e59220c2%2F0bd162d9f2d3572cbeb6d97c8213632762d0c33e.jpg"/>
+    </div>
+    <script>
+      
+    </script>
+  </body>
+</html>

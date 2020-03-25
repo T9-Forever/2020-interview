@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>xss.html</title>
+  </head>
+  <body>
+    <script>
+      let xss = location.href.substr(location.href.indexOf('xss=')+ 4);
+      // document.write(location);
+      console.log(xss);
+      document.write(decodeURIComponent(xss))
+    </script>
+  </body>
+</html>

@@ -20,6 +20,9 @@
 1. script defer async 默认区别
 2. promise.all手写
 3. 纯css 实现子容器的with 为父容器的width 50%； height 为父容器width 50%
+### 阿里躺平设计机试  
+补缺   
+1. 快排 && 冒泡排序
 
 
 ### 查漏补缺
