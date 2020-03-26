@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>测试js阻塞额dom渲染</title>
+  </head>
+  <body>
+    <div id='23'></div>
+    <script>
+      let div = document.createElement('div');
+      document.body.appendChild(div);
+      let div1 = document.getElementById('23');
+      console.log(div1, '___div1');
+    </script>
+    <div>123</div>
+  </body>
+</html>
