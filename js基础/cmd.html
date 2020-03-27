@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>cmd规范</title>
+    <body>
+      <script>
+        let script = document.createElement('script');
+        script.src = './chunk1.js';
+        script.onload = ()=> {
+          let module = {
+            exports: {}
+          }
+          chunk1(module, module.exports);
+          console.log(module, '___module');
+        }
+        document.body.appendChild(script);
+      </script>
+    </body>
+  </head>
+</html>

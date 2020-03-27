@@ -24,6 +24,15 @@
 补缺   
 1. 快排 && 冒泡排序
 
+### 百度fe  
+1. touch事件与点击穿透  
+2. scroll内层滚动问题  
+3. hooks原理
+4. git rebase 、 git reset --soft 、git merge  
+5. react16特性
+6. hooks的好处 
+7. es6特性
+
 
 ### 查漏补缺
 

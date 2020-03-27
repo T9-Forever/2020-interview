@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>eventLoop</title>
+  </head>
+  <body>
+    <script>
+      setTimeout(()=> {
+        console.log('1');
+        // for(let i = 0;i < 100000000; i += 1);
+        let cur = + new Date();
+        console.log('开始阻塞渲染');
+        while(+new Date() - cur <= 5000);
+        // requestAnimationFrame(()=> {
+        //   console.log('动画渲染1');
+        // });
+        console.log('阻塞完毕5s~');
+        setTimeout(()=> {
+          console.log('1-1');
+        }, 0);
+      }, 0);
+      setTimeout(()=> {
+        // requestAnimationFrame(()=> {
+        //   console.log('动画渲染2');
+        // });
+        console.log('2');
+      }, 0);
+      setTimeout(()=> {
+        console.log('3');
+        // requestAnimationFrame(()=> {
+        //   console.log('动画渲染3');
+        // });
+      }, 0);
+      let callback = ()=> {
+        console.log('动画渲染');
+        // requestAnimationFrame(()=> requestAnimationFrame(callback))
+      }
+      // requestAnimationFrame(callback);
+    </script>
+  </body>
+</html>
